@@ -1,5 +1,5 @@
 function Navbar() {
-  return <div className="h-14 w-full bg-stone-800 fixed"></div>;
+  return <div className="h-14 w-full fixed"></div>;
 }
 
 export default Navbar;
