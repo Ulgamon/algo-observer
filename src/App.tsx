@@ -4,7 +4,7 @@ import { ThemeProvider } from "./context/themecontext/themecontext";
 
 function App() {
   return (
-    <ThemeProvider>
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <Navbar />
     </ThemeProvider>
   );
