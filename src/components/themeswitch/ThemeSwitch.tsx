@@ -2,7 +2,11 @@ import { useTheme } from "../../context/themecontext/themecontext";
 import { Button } from "../retroui/Button";
 import { FaMoon, FaSun } from "react-icons/fa";
 
-const ThemeSwitch = () => {
+type ThemeSwitchProps = {
+  className?: string;
+};
+
+const ThemeSwitch = ({ className }: ThemeSwitchProps) => {
   const { setTheme, theme } = useTheme();
 
   const clickHandler = () => {
@@ -14,7 +18,11 @@ const ThemeSwitch = () => {
   };
 
   return (
-    <Button className="mx-auto" size="icon" onClick={clickHandler}>
+    <Button
+      className={"mx-auto" + ` ${className}`}
+      size="icon"
+      onClick={clickHandler}
+    >
       {theme === "light" ? (
         <FaMoon className="w-4 h-4" />
       ) : (

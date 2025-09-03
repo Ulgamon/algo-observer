@@ -7,9 +7,7 @@ function Navbar() {
   return (
     <div className="w-full fixed ">
       <div className=" max-w-[1600px] grid grid-flow-col pt-1 grid-cols-3 justify-around items-center mx-auto">
-        <div className="col-span-1">
-          <Logo />
-        </div>
+        <Logo className="col-span-1" />
         <div className="grid grid-flow-col col-span-1">
           <Menu>
             <Menu.Trigger asChild>
@@ -52,9 +50,7 @@ function Navbar() {
             </Menu.Content>
           </Menu>
         </div>
-        <div className="col-span-1">
-          <ThemeSwitch />
-        </div>
+        <ThemeSwitch className="col-span-1" />
       </div>
     </div>
   );
