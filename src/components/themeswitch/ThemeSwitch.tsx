@@ -1,6 +1,6 @@
 import { GoMoon, GoSun } from "react-icons/go";
 import { useTheme } from "../../context/themecontext/themecontext";
-import { Switch } from "../retroui/Switch";
+import { Button } from "../retroui/Button";
 
 const ThemeSwitch = () => {
   const { setTheme, theme } = useTheme();
@@ -14,16 +14,13 @@ const ThemeSwitch = () => {
   };
 
   return (
-    <Switch
-      className=""
-      onClick={clickHandler}
-    >
+    <Button className="m-4" size="sm" onClick={clickHandler}>
       {theme === "light" ? (
-        <GoMoon className="w-8 h-8" />
+        <GoMoon className="w-6 h-6" />
       ) : (
-        <GoSun className="w-8 h-8" />
+        <GoSun className="w-6 h-6" />
       )}
-    </Switch>
+    </Button>
   );
 };
 

@@ -2,7 +2,7 @@ import ThemeSwitch from "../themeswitch/ThemeSwitch";
 
 function Navbar() {
   return (
-    <div className="h-14 w-full fixed">
+    <div className="w-full fixed flex flex-row justify-around">
       <ThemeSwitch />
     </div>
   );
