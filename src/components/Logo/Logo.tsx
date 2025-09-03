@@ -9,9 +9,9 @@ type LogoProvider = {
 
 export const Logo = ({ className }: LogoProvider) => {
   return (
-    <div className="flex justify-center items-center">
-      <Button className="p-0 m-0 rounded-full w-min">
-        <Link to={"#"}>
+    <Link to={"#"}>
+      <Button className="w-min mx-auto">
+        <div className="flex justify-center items-center">
           <div
             className={"h-12 w-12" + ` ${className}`}
             style={{
@@ -19,11 +19,11 @@ export const Logo = ({ className }: LogoProvider) => {
               backgroundSize: "cover",
             }}
           />
-        </Link>
+          <Text className="ms-2 text-nowrap" as="h3">
+            Algo Observer
+          </Text>
+        </div>
       </Button>
-      <Text className="ms-2" as="h3">
-        Algo Observer
-      </Text>
-    </div>
+    </Link>
   );
 };
