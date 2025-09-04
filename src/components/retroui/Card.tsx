@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import { type HTMLAttributes } from "react";
 import { Text } from "@/components/retroui/Text";
 
@@ -11,7 +11,7 @@ const Card = ({ className, ...props }: ICardProps) => {
     <div
       className={cn(
         "inline-block border-2 shadow-md transition-all hover:shadow-xs bg-card",
-        className,
+        className
       )}
       {...props}
     />
