@@ -2,7 +2,7 @@ import { Text } from "./retroui/Text";
 
 type ListTitleProps = {
   title: string;
-  className: string;
+  className?: string;
 };
 
 export const ListTitle = ({ title, className }: ListTitleProps) => {
