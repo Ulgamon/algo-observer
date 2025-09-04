@@ -4,8 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 @theme {
   --breakpoint-xs: 30rem;
-  --breakpoint-2xl: 100rem;
-  --breakpoint-3xl: 120rem;
+  --breakpoint-2xl: 1150px;
+  --breakpoint-3xl: 2100px;
   --font-head: "Archivo Black", sans-serif;
   --font-sans: "Space Grotesk", sans-serif;
   --shadow-xs: 1px 1px 0 0 var(--border);
@@ -76,4 +76,30 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Styling the entire scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the vertical scrollbar */
+  height: 10px; /* Height of the horizontal scrollbar */
+}
+
+/* Styling the scrollbar track (the background area) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Styling the scrollbar thumb (the draggable handle) */
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}
+
+/* Styling the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+/* Styling the scrollbar corner (where vertical and horizontal scrollbars meet) */
+::-webkit-scrollbar-corner {
+  background: #ccc;
 }
