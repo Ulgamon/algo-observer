@@ -9,7 +9,7 @@ function App() {
       <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
         <Navbar />
         <Sidebar />
-        <div className="max-w-[1600px] pt-20 min-h-screen outline-1 mx-auto">
+        <div className="max-w-[1600px] pt-20 min-h-screen mx-auto">
           <Routes>
             <Route index element={<p>index</p>} />
             <Route path="sorting" element={<p>sorting</p>} />

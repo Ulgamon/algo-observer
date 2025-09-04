@@ -15,7 +15,7 @@ const Content = ({ className, ...props }: IMenuContent) => (
       side="bottom"
       align="start"
       className={cn(
-        "bg-white border-2 shadow-md absolute top-2 min-w-20",
+        "bg-white z-10 border-2 shadow-md absolute top-2 min-w-20",
         className,
       )}
       {...props}

@@ -39,7 +39,7 @@
   --primary: #ffdb33;
   --primary-hover: #ffcc00;
   --primary-foreground: #000;
-  --secondary: #000;
+  --secondary: #122c21;
   --secondary-foreground: #fff;
   --muted: #aeaeae;
   --muted-foreground: #5a5a5a;
@@ -47,11 +47,11 @@
   --accent-foreground: #000;
   --destructive: #e63946;
   --destructive-foreground: #fff;
-  --border: #000;
+  --border: #333333;
 }
 
 .dark {
-  --background: #242222;
+  --background: #1a1a1a;
   --foreground: #f5f5f5;
   --card: #242424;
   --card-foreground: #f5f5f5;

@@ -20,7 +20,7 @@ export const Logo = ({ className }: LogoProvider) => {
             }}
           />
           <Text className="ms-2 text-nowrap" as="h3">
-            Algo Observer
+            Algo.Observer
           </Text>
         </div>
       </Button>
