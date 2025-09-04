@@ -1,6 +1,7 @@
 import { Logo } from "./Logo";
 import { Button } from "./retroui/Button";
 import { Menu } from "./retroui/Menu";
+import { SidebarButton } from "./SidebarButton";
 import ThemeSwitch from "./ThemeSwitch";
 
 function Navbar() {
@@ -51,6 +52,7 @@ function Navbar() {
           </Menu>
         </div>
         <ThemeSwitch className="col-span-1 hidden 2xl:block" />
+        <SidebarButton className="col-span-1 2xl:hidden" />
       </div>
     </div>
   );
