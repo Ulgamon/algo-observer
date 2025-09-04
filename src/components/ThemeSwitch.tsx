@@ -1,6 +1,6 @@
-import { useTheme } from "../../context/themecontext/themecontext";
-import { Button } from "../retroui/Button";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { Button } from "./retroui/Button";
+import { useTheme } from "@/context/themecontext";
 
 type ThemeSwitchProps = {
   className?: string;

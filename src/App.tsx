@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import Navbar from "./components/Navbar/Navbar";
-import { Sidebar } from "./components/Sidebar/Sidebar";
-import { ThemeProvider } from "./context/themecontext/themecontext";
+import Navbar from "./components/Navbar";
+import { Sidebar } from "./components/Sidebar";
+import { ThemeProvider } from "./context/themecontext";
 
 function App() {
   return (
