@@ -1,7 +1,6 @@
 import { FaMoon, FaSun } from "react-icons/fa";
 import { Button } from "./retroui/Button";
-import { useTheme } from "@/context/themecontext";
-
+import { useTheme } from "../context/themecontext";
 type ThemeSwitchProps = {
   className?: string;
 };
