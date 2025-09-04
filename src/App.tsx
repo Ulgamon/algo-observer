@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Navbar from "./components/Navbar";
 import { Sidebar } from "./components/Sidebar";
 import { ThemeProvider } from "./context/themecontext";
+import { Error } from "./pages/Error";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route index element={<p>index</p>} />
             <Route path="sorting" element={<p>sorting</p>} />
             <Route path="divideconquer" element={<p>sorting</p>} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </div>
       </ThemeProvider>
