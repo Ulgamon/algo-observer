@@ -3,6 +3,9 @@
 
 @custom-variant dark (&:is(.dark *));
 @theme {
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
   --font-head: "Archivo Black", sans-serif;
   --font-sans: "Space Grotesk", sans-serif;
   --shadow-xs: 1px 1px 0 0 var(--border);
@@ -39,7 +42,7 @@
   --primary: #ffdb33;
   --primary-hover: #ffcc00;
   --primary-foreground: #000;
-  --secondary: #122c21;
+  --secondary: #12252c;
   --secondary-foreground: #fff;
   --muted: #aeaeae;
   --muted-foreground: #5a5a5a;

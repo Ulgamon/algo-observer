@@ -10,7 +10,7 @@ type LogoProvider = {
 export const Logo = ({ className }: LogoProvider) => {
   return (
     <Link to={"#"}>
-      <Button className="w-min mx-auto" variant="secondary">
+      <Button className="w-min mx-auto rounded-2xl" variant="secondary">
         <div className="flex justify-center items-center">
           <div
             className={"h-12 w-12" + ` ${className}`}
