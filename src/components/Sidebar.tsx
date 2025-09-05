@@ -27,7 +27,7 @@ export const Sidebar = () => {
       </div>
       {show && (
         <div className="min-w-[250px] start-0 outline-3 z-20 bg-background outline-dashed min-h-screen fixed 3xl:hidden">
-          <div className="flex w-full justify-items-end pt-1 pb-2 pe-5 mx-auto">
+          <div className="flex w-full justify-items-end pt-3 pb-5 pe-5 mx-auto">
             <ThemeSwitch />
             <SidebarClose />
           </div>
@@ -62,7 +62,7 @@ const PortaledBackgroud = ({ setHidden, show }: PortaledBackgroudProps) => {
     return (
       <div
         onClick={setHidden}
-        className="min-h-screen fixed start-0 top-0 w-full 3xl:hidden"
+        className="min-h-screen fixed z-10 start-0 top-0 w-full 3xl:hidden"
       ></div>
     );
   } else {
