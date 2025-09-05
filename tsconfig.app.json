@@ -33,6 +33,7 @@
     "src/tests",
     "tests/setup.ts",
     "tests/main.test.ts",
-    "tests/components",
+    "tests/context",
+    "tests/components"
   ]
 }
