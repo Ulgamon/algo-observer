@@ -27,7 +27,7 @@ export const Sidebar = () => {
       </div>
       {show && (
         <div className="min-w-[250px] start-0 outline-3 z-20 bg-background outline-dashed min-h-screen fixed 3xl:hidden">
-          <div className="flex w-full justify-items-end pt-3 pb-5 pe-5 mx-auto">
+          <div className="flex w-full justify-items-end pt-3 pb-4 mb-1 pe-5 mx-auto outline-3 outline-dashed">
             <ThemeSwitch />
             <SidebarClose />
           </div>
@@ -58,14 +58,12 @@ type PortaledBackgroudProps = {
 };
 
 const PortaledBackgroud = ({ setHidden, show }: PortaledBackgroudProps) => {
-  if (show) {
-    return (
-      <div
-        onClick={setHidden}
-        className="min-h-screen fixed z-10 start-0 top-0 w-full 3xl:hidden"
-      ></div>
-    );
-  } else {
-    return <></>;
-  }
+  return show === true ? (
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={setHidden}
+      className="min-h-screen fixed z-10 start-0 top-0 w-full 3xl:hidden"
+    ></div>
+  ) : null;
 };
