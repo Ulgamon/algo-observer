@@ -26,6 +26,12 @@ pipeline {
             }
         }
 
+        stage("Test") {
+            steps {
+                sh "npm run test"
+            }
+        }
+
         stage("Run Linter") {
             steps {
                 sh "npm run lint"
