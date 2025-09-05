@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 type SidebarProps = {
   children: React.ReactNode;
@@ -27,11 +27,14 @@ export function SidebarProvider({
 }: Readonly<SidebarProps>) {
   const [show, setShow] = useState<boolean>(showSidebar);
 
-  const value: SidebarProviderState = {
-    show: show,
-    setHidden: () => setShow(false),
-    setShow: () => setShow(true),
-  };
+  const value = useMemo(
+    () => ({
+      show: show,
+      setHidden: () => setShow(false),
+      setShow: () => setShow(true),
+    }),
+    [show, setShow]
+  );
 
   return (
     <SidebarProviderContext.Provider {...props} value={value}>
