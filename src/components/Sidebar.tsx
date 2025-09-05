@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { useSidebar } from "../context/sidebarcontext";
 import { sidebarData } from "../lib/data";
 import { SidebarClose } from "./SidebarClose";
@@ -5,7 +6,7 @@ import { SidebarList } from "./SidebarList";
 import ThemeSwitch from "./ThemeSwitch";
 
 export const Sidebar = () => {
-  const { show } = useSidebar();
+  const { show, setHidden } = useSidebar();
   return (
     <>
       <div className="min-w-[250px] hidden start-0 outline-3 outline-dashed min-h-screen fixed 3xl:block">
@@ -43,6 +44,28 @@ export const Sidebar = () => {
           </div>
         </div>
       )}
+      {createPortal(
+        <PortaledBackgroud setHidden={setHidden} show={show} />,
+        document.body
+      )}
     </>
   );
+};
+
+type PortaledBackgroudProps = {
+  setHidden: () => void;
+  show: boolean;
+};
+
+const PortaledBackgroud = ({ setHidden, show }: PortaledBackgroudProps) => {
+  if (show) {
+    return (
+      <div
+        onClick={setHidden}
+        className="min-h-screen fixed start-0 top-0 w-full 3xl:hidden"
+      ></div>
+    );
+  } else {
+    return <></>;
+  }
 };

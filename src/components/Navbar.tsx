@@ -7,7 +7,7 @@ import ThemeSwitch from "./ThemeSwitch";
 function Navbar() {
   return (
     <div className="w-full fixed bg-background dark:bg-background z-10 outline-3 outline-dashed pb-2">
-      <div className=" max-w-[1600px] grid grid-flow-col pt-1 grid-cols-3 justify-around items-center mx-auto">
+      <div className=" max-w-[1600px] grid grid-flow-col pt-1 2xl:grid-cols-3 justify-around items-center mx-auto pe-5 2xl:pe-0">
         <Logo className="col-span-1" />
         <div className="grid-flow-col col-span-1 hidden 2xl:grid">
           <Menu>
@@ -52,7 +52,9 @@ function Navbar() {
           </Menu>
         </div>
         <ThemeSwitch className="col-span-1 hidden 2xl:block" />
-        <SidebarButton className="col-span-1 2xl:hidden" />
+        <div className="col-span-1 block w-full 2xl:hidden">
+          <SidebarButton />
+        </div>
       </div>
     </div>
   );

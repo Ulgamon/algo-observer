@@ -1,6 +1,9 @@
+type ShowIndicator = "soon" | "new" | "old";
+
 export type SidebarLinkData = {
   to: string;
   name: string;
+  badge: ShowIndicator;
 };
 
 export type SidebarListData = {
@@ -12,57 +15,90 @@ export const sidebarData: SidebarListData[] = [
   {
     title: "Arrays & Strings",
     elements: [
-      { to: "/arrays/introduction", name: "Introduction to Arrays" },
-      { to: "/arrays/two-sum", name: "Two Sum Problem" },
-      { to: "/strings/reverse-string", name: "Reverse String" },
+      {
+        badge: "soon",
+        to: "/arrays/introduction",
+        name: "Introduction to Arrays",
+      },
+      { badge: "soon", to: "/arrays/two-sum", name: "Two Sum Problem" },
+      { badge: "soon", to: "/strings/reverse-string", name: "Reverse String" },
     ],
   },
   {
     title: "Linked Lists",
     elements: [
-      { to: "/linked-lists/singly", name: "Singly Linked List" },
-      { to: "/linked-lists/doubly", name: "Doubly Linked List" },
-      { to: "/linked-lists/cycle-detection", name: "Cycle Detection" },
+      { badge: "soon", to: "/linked-lists/singly", name: "Singly Linked List" },
+      { badge: "soon", to: "/linked-lists/doubly", name: "Doubly Linked List" },
+      {
+        badge: "soon",
+        to: "/linked-lists/cycle-detection",
+        name: "Cycle Detection",
+      },
     ],
   },
   {
     title: "Stacks & Queues",
     elements: [
-      { to: "/stacks/implementation", name: "Stack Implementation" },
-      { to: "/stacks/valid-parentheses", name: "Valid Parentheses" },
-      { to: "/queues/queue-using-stacks", name: "Queue Using Stacks" },
+      {
+        badge: "soon",
+        to: "/stacks/implementation",
+        name: "Stack Implementation",
+      },
+      {
+        badge: "soon",
+        to: "/stacks/valid-parentheses",
+        name: "Valid Parentheses",
+      },
+      {
+        badge: "soon",
+        to: "/queues/queue-using-stacks",
+        name: "Queue Using Stacks",
+      },
     ],
   },
   {
     title: "Trees",
     elements: [
-      { to: "/trees/binary-tree-traversal", name: "Binary Tree Traversal" },
-      { to: "/trees/binary-search-tree", name: "Binary Search Tree" },
-      { to: "/trees/lowest-common-ancestor", name: "Lowest Common Ancestor" },
+      {
+        badge: "new",
+        to: "/trees/binary-tree-traversal",
+        name: "Binary Tree Traversal",
+      },
+      {
+        badge: "new",
+        to: "/trees/binary-search-tree",
+        name: "Binary Search Tree",
+      },
+      {
+        badge: "soon",
+        to: "/trees/lowest-common-ancestor",
+        name: "Lowest Common Ancestor",
+      },
     ],
   },
   {
     title: "Graphs",
     elements: [
-      { to: "/graphs/dfs", name: "Depth First Search" },
-      { to: "/graphs/bfs", name: "Breadth First Search" },
-      { to: "/graphs/dijkstra", name: "Dijkstra's Algorithm" },
+      { badge: "soon", to: "/graphs/dfs", name: "Depth First Search" },
+      { badge: "soon", to: "/graphs/bfs", name: "Breadth First Search" },
+      { badge: "soon", to: "/graphs/dijkstra", name: "Dijkstra's Algorithm" },
     ],
   },
   {
     title: "Sorting & Searching",
     elements: [
-      { to: "/sorting/quick-sort", name: "Quick Sort" },
-      { to: "/sorting/merge-sort", name: "Merge Sort" },
-      { to: "/searching/binary-search", name: "Binary Search" },
+      { badge: "soon", to: "/sorting/quick-sort", name: "Quick Sort" },
+      { badge: "soon", to: "/sorting/merge-sort", name: "Merge Sort" },
+      { badge: "new", to: "/searching/binary-search", name: "Binary Search" },
     ],
   },
   {
     title: "Dynamic Programming",
     elements: [
-      { to: "/dp/fibonacci", name: "Fibonacci Sequence" },
-      { to: "/dp/knapsack", name: "0/1 Knapsack" },
+      { badge: "new", to: "/dp/fibonacci", name: "Fibonacci Sequence" },
+      { badge: "soon", to: "/dp/knapsack", name: "0/1 Knapsack" },
       {
+        badge: "soon",
         to: "/dp/longest-common-subsequence",
         name: "Longest Common Subsequence",
       },

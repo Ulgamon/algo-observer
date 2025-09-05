@@ -10,16 +10,16 @@ type LogoProvider = {
 export const Logo = ({ className }: LogoProvider) => {
   return (
     <Link to={"#"}>
-      <Button className="w-min mx-auto rounded-2xl" variant="secondary">
+      <Button className="w-min mx-auto px-2 py-1 2xl:px-4 2xl:py-1.5" variant="secondary">
         <div className="flex justify-center items-center">
           <div
-            className={"h-12 w-12" + ` ${className}`}
+            className={"h-10 w-10 2xl:w-12 2xl:h-12" + ` ${className}`}
             style={{
               backgroundImage: `url(${bgImage})`,
               backgroundSize: "cover",
             }}
           />
-          <Text className="ms-2 text-nowrap" as="h3">
+          <Text className="ms-2 text-nowrap hidden 2xl:block" as="h3">
             Algo.Observer
           </Text>
         </div>
