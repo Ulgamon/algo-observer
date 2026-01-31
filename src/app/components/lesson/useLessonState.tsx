@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 interface LessonStep {
   description: string;
   highlightedLines: number[];
-  variables: Record<string, any>;
+  variables: Record<string, unknown>;
   highlightedVars: string[];
-  visualData: any;
+  visualData: unknown;
 }
 
 interface LessonData {

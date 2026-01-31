@@ -1,16 +1,13 @@
-import { Search, BookOpen, Menu, Sun, Moon, Github } from 'lucide-react';
-import { Button } from '@/app/components/ui/button';
-import { Input } from '@/app/components/ui/input';
-import { useTheme } from 'next-themes';
+import { Search, BookOpen, Menu, Sun, Moon, Github } from "lucide-react";
+import { Button } from "@/app/components/ui/button";
+import { Input } from "@/app/components/ui/input";
+import { useTheme } from "next-themes";
 
 interface TopNavProps {
   onToggleSidebar: () => void;
-  activeSection: string;
-  onSectionChange: (section: string) => void;
 }
 
-export function TopNav({ onToggleSidebar, activeSection, onSectionChange }: TopNavProps) {
-  const sections = ['Introduction', 'Data Structures', 'Algorithms', 'Visualizations'];
+export function TopNav({ onToggleSidebar }: TopNavProps) {
   const { theme, setTheme } = useTheme();
 
   return (
@@ -28,7 +25,9 @@ export function TopNav({ onToggleSidebar, activeSection, onSectionChange }: TopN
           </Button>
           <div className="flex items-center gap-2">
             <BookOpen className="size-6 text-blue-600 dark:text-blue-500" />
-            <span className="font-semibold text-zinc-900 dark:text-zinc-100">Algo.Observer</span>
+            <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+              Algo.Observer
+            </span>
           </div>
         </div>
 
@@ -46,22 +45,6 @@ export function TopNav({ onToggleSidebar, activeSection, onSectionChange }: TopN
 
         {/* Right section - Navigation tabs and theme toggle */}
         <div className="flex items-center gap-2">
-          <nav className="hidden md:flex items-center gap-1">
-            {sections.map((section) => (
-              <button
-                key={section}
-                onClick={() => onSectionChange(section)}
-                className={`px-3 py-2 text-sm rounded-md transition-colors ${
-                  activeSection === section
-                    ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100'
-                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900'
-                }`}
-              >
-                {section}
-              </button>
-            ))}
-          </nav>
-          
           <a
             href="https://github.com/Ulgamon/algo-observer"
             target="_blank"
@@ -76,11 +59,11 @@ export function TopNav({ onToggleSidebar, activeSection, onSectionChange }: TopN
               <Github className="size-5 text-zinc-600 dark:text-zinc-400" />
             </Button>
           </a>
-          
+
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="hover:bg-zinc-100 dark:hover:bg-zinc-800"
           >
             <Sun className="size-5 text-zinc-600 dark:text-zinc-400 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />

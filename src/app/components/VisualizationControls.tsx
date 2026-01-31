@@ -1,13 +1,12 @@
-import { Play, Pause, SkipForward, RotateCcw, Settings } from 'lucide-react';
-import { Button } from '@/app/components/ui/button';
-import { Slider } from '@/app/components/ui/slider';
+import { Play, Pause, SkipForward, RotateCcw, Settings } from "lucide-react";
+import { Button } from "@/app/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/app/components/ui/select';
+} from "@/app/components/ui/select";
 
 interface VisualizationControlsProps {
   isPlaying: boolean;
@@ -44,7 +43,9 @@ export function VisualizationControls({
           ) : (
             <Play className="size-4" />
           )}
-          <span className="ml-2 hidden sm:inline">{isPlaying ? 'Pause' : 'Play'}</span>
+          <span className="ml-2 hidden sm:inline">
+            {isPlaying ? "Pause" : "Play"}
+          </span>
         </Button>
         <Button
           size="sm"
@@ -74,10 +75,13 @@ export function VisualizationControls({
             {currentStep} / {totalSteps}
           </span>
         </div>
-        
+
         <div className="flex items-center gap-2 w-32 hidden md:flex">
           <Settings className="size-4 text-zinc-500" />
-          <Select value={speed.toString()} onValueChange={(v) => onSpeedChange(Number(v))}>
+          <Select
+            value={speed.toString()}
+            onValueChange={(v) => onSpeedChange(Number(v))}
+          >
             <SelectTrigger className="h-8 text-xs border-zinc-300 dark:border-zinc-700">
               <SelectValue />
             </SelectTrigger>

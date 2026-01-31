@@ -5,7 +5,12 @@ interface StepTimelineProps {
   stepDescriptions: string[];
 }
 
-export function StepTimeline({ currentStep, totalSteps, onStepChange, stepDescriptions }: StepTimelineProps) {
+export function StepTimeline({
+  currentStep,
+  totalSteps,
+  onStepChange,
+  stepDescriptions,
+}: StepTimelineProps) {
   return (
     <div className="px-4 py-4 bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
       <TimelineBar
@@ -13,7 +18,9 @@ export function StepTimeline({ currentStep, totalSteps, onStepChange, stepDescri
         totalSteps={totalSteps}
         onStepChange={onStepChange}
       />
-      <StepDescription description={stepDescriptions[currentStep] || 'Ready to begin'} />
+      <StepDescription
+        description={stepDescriptions[currentStep] || "Ready to begin"}
+      />
     </div>
   );
 }
@@ -24,7 +31,11 @@ interface TimelineBarProps {
   onStepChange: (step: number) => void;
 }
 
-function TimelineBar({ currentStep, totalSteps, onStepChange }: TimelineBarProps) {
+function TimelineBar({
+  currentStep,
+  totalSteps,
+  onStepChange,
+}: TimelineBarProps) {
   const steps = Array.from({ length: totalSteps + 1 }, (_, i) => i);
 
   return (
@@ -55,16 +66,16 @@ function TimelineStep({ index, currentStep, onStepChange }: TimelineStepProps) {
 
   const getStyles = () => {
     if (isCompleted) {
-      return 'bg-blue-600 dark:bg-blue-500';
+      return "bg-blue-600 dark:bg-blue-500";
     }
-    return 'bg-zinc-200 dark:bg-zinc-800';
+    return "bg-zinc-200 dark:bg-zinc-800";
   };
 
   const getRingStyles = () => {
     if (isActive) {
-      return 'ring-2 ring-blue-400 ring-offset-2 dark:ring-offset-zinc-950';
+      return "ring-2 ring-blue-400 ring-offset-2 dark:ring-offset-zinc-950";
     }
-    return '';
+    return "";
   };
 
   return (

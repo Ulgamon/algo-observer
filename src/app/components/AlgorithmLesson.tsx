@@ -1,10 +1,14 @@
-import { useState } from 'react';
-import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/app/components/ui/resizable';
-import { DocumentationPanel } from './lesson/DocumentationPanel';
-import { VisualizationSection } from './lesson/VisualizationSection';
-import { useLessonState } from './lesson/useLessonState';
-import { Button } from '@/app/components/ui/button';
-import { Eye, BookOpen } from 'lucide-react';
+import { useState } from "react";
+import {
+  ResizablePanelGroup,
+  ResizablePanel,
+  ResizableHandle,
+} from "@/app/components/ui/resizable";
+import { DocumentationPanel } from "./lesson/DocumentationPanel";
+import { VisualizationSection } from "./lesson/VisualizationSection";
+import { useLessonState } from "./lesson/useLessonState";
+import { Button } from "@/app/components/ui/button";
+import { Eye, BookOpen } from "lucide-react";
 
 interface AlgorithmLessonProps {
   algorithmId: string;
@@ -62,7 +66,9 @@ export function AlgorithmLesson({ algorithmId }: AlgorithmLessonProps) {
             onSpeedChange={setSpeed}
             currentStep={currentStep}
             totalSteps={totalSteps}
-            stepDescriptions={lessonData.steps.map((s) => s.description)}
+            stepDescriptions={lessonData.steps.map(
+              (s: { description: unknown }) => s.description,
+            )}
             onStepChange={handleStepChange}
             visualData={currentStepData.visualData}
             algorithmId={algorithmId}
@@ -101,7 +107,11 @@ export function AlgorithmLesson({ algorithmId }: AlgorithmLessonProps) {
               onSpeedChange={setSpeed}
               currentStep={currentStep}
               totalSteps={totalSteps}
-              stepDescriptions={lessonData.steps.map((s) => s.description)}
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              stepDescriptions={lessonData.steps.map(
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (s: { description: any }) => s.description,
+              )}
               onStepChange={handleStepChange}
               visualData={currentStepData.visualData}
               algorithmId={algorithmId}
@@ -115,91 +125,102 @@ export function AlgorithmLesson({ algorithmId }: AlgorithmLessonProps) {
   );
 }
 
-function VisualizationCanvas({ data, algorithmId }: { data: any; algorithmId: string }) {
-  // Simple array visualization
-  if (Array.isArray(data)) {
-    return (
-      <div className="flex gap-2">
-        {data.map((item, index) => (
-          <div
-            key={index}
-            className={`w-16 h-16 flex items-center justify-center rounded-lg font-mono font-semibold text-lg transition-all ${
-              item.highlighted
-                ? 'bg-blue-500 text-white scale-110 shadow-lg'
-                : item.sorted
-                ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-2 border-green-500'
-                : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border-2 border-zinc-300 dark:border-zinc-700'
-            }`}
-          >
-            {item.value}
-          </div>
-        ))}
-      </div>
-    );
-  }
+// function VisualizationCanvas({
+//   data,
+//   algorithmId,
+// }: {
+//   data: unknown;
+//   algorithmId: string;
+// }) {
+//   // Simple array visualization
+//   if (Array.isArray(data)) {
+//     return (
+//       <div className="flex gap-2">
+//         {data.map((item, index) => (
+//           <div
+//             key={index}
+//             className={`w-16 h-16 flex items-center justify-center rounded-lg font-mono font-semibold text-lg transition-all ${
+//               item.highlighted
+//                 ? "bg-blue-500 text-white scale-110 shadow-lg"
+//                 : item.sorted
+//                   ? "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-2 border-green-500"
+//                   : "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border-2 border-zinc-300 dark:border-zinc-700"
+//             }`}
+//           >
+//             {item.value}
+//           </div>
+//         ))}
+//       </div>
+//     );
+//   }
 
-  // Graph visualization placeholder
-  if (algorithmId.includes('search') || algorithmId.includes('graph')) {
-    return (
-      <div className="text-center">
-        <div className="mb-4 text-6xl">🔍</div>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">Graph visualization</p>
-      </div>
-    );
-  }
+//   // Graph visualization placeholder
+//   if (algorithmId.includes("search") || algorithmId.includes("graph")) {
+//     return (
+//       <div className="text-center">
+//         <div className="mb-4 text-6xl">🔍</div>
+//         <p className="text-sm text-zinc-600 dark:text-zinc-400">
+//           Graph visualization
+//         </p>
+//       </div>
+//     );
+//   }
 
-  return (
-    <div className="text-center text-zinc-500 dark:text-zinc-600">
-      <p className="text-sm">Visualization canvas</p>
-    </div>
-  );
-}
+//   return (
+//     <div className="text-center text-zinc-500 dark:text-zinc-600">
+//       <p className="text-sm">Visualization canvas</p>
+//     </div>
+//   );
+// }
 
 function getLessonData(algorithmId: string) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const data: Record<string, any> = {
-    'quick-sort': {
-      title: 'Quick Sort',
-      category: 'Sorting & Searching',
-      description: 'A divide-and-conquer sorting algorithm that picks a pivot and partitions the array.',
-      timeComplexity: 'O(n log n) average, O(n²) worst',
-      spaceComplexity: 'O(log n)',
+    "quick-sort": {
+      title: "Quick Sort",
+      category: "Sorting & Searching",
+      description:
+        "A divide-and-conquer sorting algorithm that picks a pivot and partitions the array.",
+      timeComplexity: "O(n log n) average, O(n²) worst",
+      spaceComplexity: "O(log n)",
       pseudocode: [
-        'function quickSort(arr, low, high):',
-        '  if low < high:',
-        '    pivot = partition(arr, low, high)',
-        '    quickSort(arr, low, pivot - 1)',
-        '    quickSort(arr, pivot + 1, high)',
-        '',
-        'function partition(arr, low, high):',
-        '  pivot = arr[high]',
-        '  i = low - 1',
-        '  for j from low to high - 1:',
-        '    if arr[j] < pivot:',
-        '      i = i + 1',
-        '      swap arr[i] and arr[j]',
-        '  swap arr[i + 1] and arr[high]',
-        '  return i + 1',
+        "function quickSort(arr, low, high):",
+        "  if low < high:",
+        "    pivot = partition(arr, low, high)",
+        "    quickSort(arr, low, pivot - 1)",
+        "    quickSort(arr, pivot + 1, high)",
+        "",
+        "function partition(arr, low, high):",
+        "  pivot = arr[high]",
+        "  i = low - 1",
+        "  for j from low to high - 1:",
+        "    if arr[j] < pivot:",
+        "      i = i + 1",
+        "      swap arr[i] and arr[j]",
+        "  swap arr[i + 1] and arr[high]",
+        "  return i + 1",
       ],
-      overview: 'Quick Sort is an efficient, in-place sorting algorithm that uses divide-and-conquer strategy. It picks an element as pivot and partitions the array around the pivot, placing smaller elements before it and larger elements after it.',
+      overview:
+        "Quick Sort is an efficient, in-place sorting algorithm that uses divide-and-conquer strategy. It picks an element as pivot and partitions the array around the pivot, placing smaller elements before it and larger elements after it.",
       explanation: [
-        'Choose a pivot element from the array (commonly the last element)',
-        'Partition the array by moving elements smaller than pivot to the left',
-        'Place the pivot in its correct sorted position',
-        'Recursively apply the same process to the left and right sub-arrays',
-        'Continue until all sub-arrays are sorted',
+        "Choose a pivot element from the array (commonly the last element)",
+        "Partition the array by moving elements smaller than pivot to the left",
+        "Place the pivot in its correct sorted position",
+        "Recursively apply the same process to the left and right sub-arrays",
+        "Continue until all sub-arrays are sorted",
       ],
       useCases: [
-        'General-purpose sorting with good average performance',
-        'When in-place sorting is required to save memory',
-        'Sorting large datasets where cache performance matters',
-        'As a building block in other algorithms',
+        "General-purpose sorting with good average performance",
+        "When in-place sorting is required to save memory",
+        "Sorting large datasets where cache performance matters",
+        "As a building block in other algorithms",
       ],
       steps: [
         {
-          description: 'Initial array: [5, 2, 8, 1, 9]. Select pivot (9).',
+          description: "Initial array: [5, 2, 8, 1, 9]. Select pivot (9).",
           highlightedLines: [0, 1],
           variables: { arr: [5, 2, 8, 1, 9], pivot: 9, low: 0, high: 4 },
-          highlightedVars: ['pivot'],
+          highlightedVars: ["pivot"],
           visualData: [
             { value: 5, highlighted: false, sorted: false },
             { value: 2, highlighted: false, sorted: false },
@@ -209,10 +230,11 @@ function getLessonData(algorithmId: string) {
           ],
         },
         {
-          description: 'Partition: Compare 5 with pivot 9. 5 < 9, stays on left.',
+          description:
+            "Partition: Compare 5 with pivot 9. 5 < 9, stays on left.",
           highlightedLines: [10, 11],
           variables: { arr: [5, 2, 8, 1, 9], pivot: 9, i: 0, j: 0 },
-          highlightedVars: ['i', 'j'],
+          highlightedVars: ["i", "j"],
           visualData: [
             { value: 5, highlighted: true, sorted: false },
             { value: 2, highlighted: false, sorted: false },
@@ -222,10 +244,10 @@ function getLessonData(algorithmId: string) {
           ],
         },
         {
-          description: 'Compare 8 with pivot 9. 8 < 9, stays on left.',
+          description: "Compare 8 with pivot 9. 8 < 9, stays on left.",
           highlightedLines: [10, 11],
           variables: { arr: [5, 2, 8, 1, 9], pivot: 9, i: 2, j: 2 },
-          highlightedVars: ['j'],
+          highlightedVars: ["j"],
           visualData: [
             { value: 5, highlighted: false, sorted: false },
             { value: 2, highlighted: false, sorted: false },
@@ -235,10 +257,10 @@ function getLessonData(algorithmId: string) {
           ],
         },
         {
-          description: 'Place pivot in correct position. Pivot is now sorted.',
+          description: "Place pivot in correct position. Pivot is now sorted.",
           highlightedLines: [13, 14],
           variables: { arr: [5, 2, 8, 1, 9], pivot: 9, i: 3 },
-          highlightedVars: ['pivot'],
+          highlightedVars: ["pivot"],
           visualData: [
             { value: 5, highlighted: false, sorted: false },
             { value: 2, highlighted: false, sorted: false },
@@ -248,7 +270,7 @@ function getLessonData(algorithmId: string) {
           ],
         },
         {
-          description: 'Recursively sort left partition [5, 2, 8, 1].',
+          description: "Recursively sort left partition [5, 2, 8, 1].",
           highlightedLines: [3],
           variables: { arr: [5, 2, 8, 1, 9], low: 0, high: 3 },
           highlightedVars: [],
@@ -261,7 +283,7 @@ function getLessonData(algorithmId: string) {
           ],
         },
         {
-          description: 'Sorting complete! All elements in correct position.',
+          description: "Sorting complete! All elements in correct position.",
           highlightedLines: [],
           variables: { arr: [1, 2, 5, 8, 9] },
           highlightedVars: [],
@@ -275,68 +297,70 @@ function getLessonData(algorithmId: string) {
         },
       ],
     },
-    'depth-first-search': {
-      title: 'Depth First Search',
-      category: 'Graphs',
-      description: 'Explore graph nodes by going as deep as possible before backtracking.',
-      timeComplexity: 'O(V + E)',
-      spaceComplexity: 'O(V)',
+    "depth-first-search": {
+      title: "Depth First Search",
+      category: "Graphs",
+      description:
+        "Explore graph nodes by going as deep as possible before backtracking.",
+      timeComplexity: "O(V + E)",
+      spaceComplexity: "O(V)",
       pseudocode: [
-        'function dfs(graph, start, visited):',
-        '  visited.add(start)',
-        '  process(start)',
-        '  ',
-        '  for each neighbor in graph[start]:',
-        '    if neighbor not in visited:',
-        '      dfs(graph, neighbor, visited)',
-        '  ',
-        '  return visited',
+        "function dfs(graph, start, visited):",
+        "  visited.add(start)",
+        "  process(start)",
+        "  ",
+        "  for each neighbor in graph[start]:",
+        "    if neighbor not in visited:",
+        "      dfs(graph, neighbor, visited)",
+        "  ",
+        "  return visited",
       ],
-      overview: 'Depth-First Search explores a graph by going as far as possible along each branch before backtracking. It uses recursion or an explicit stack to keep track of vertices to visit.',
+      overview:
+        "Depth-First Search explores a graph by going as far as possible along each branch before backtracking. It uses recursion or an explicit stack to keep track of vertices to visit.",
       explanation: [
-        'Start at a given vertex and mark it as visited',
-        'Explore each unvisited neighbor recursively',
-        'Go as deep as possible before backtracking',
-        'Continue until all reachable vertices are visited',
+        "Start at a given vertex and mark it as visited",
+        "Explore each unvisited neighbor recursively",
+        "Go as deep as possible before backtracking",
+        "Continue until all reachable vertices are visited",
       ],
       useCases: [
-        'Finding connected components in a graph',
-        'Detecting cycles in directed and undirected graphs',
-        'Topological sorting of directed acyclic graphs',
-        'Solving maze and puzzle problems',
+        "Finding connected components in a graph",
+        "Detecting cycles in directed and undirected graphs",
+        "Topological sorting of directed acyclic graphs",
+        "Solving maze and puzzle problems",
       ],
       steps: [
         {
-          description: 'Start DFS at node A. Mark A as visited.',
+          description: "Start DFS at node A. Mark A as visited.",
           highlightedLines: [1, 2],
-          variables: { current: 'A', visited: ['A'] },
-          highlightedVars: ['current'],
-          visualData: { current: 'A', visited: ['A'] },
+          variables: { current: "A", visited: ["A"] },
+          highlightedVars: ["current"],
+          visualData: { current: "A", visited: ["A"] },
         },
         {
-          description: 'Visit neighbor B from A. Mark B as visited.',
+          description: "Visit neighbor B from A. Mark B as visited.",
           highlightedLines: [5, 6],
-          variables: { current: 'B', visited: ['A', 'B'] },
-          highlightedVars: ['current'],
-          visualData: { current: 'B', visited: ['A', 'B'] },
+          variables: { current: "B", visited: ["A", "B"] },
+          highlightedVars: ["current"],
+          visualData: { current: "B", visited: ["A", "B"] },
         },
         {
-          description: 'Visit neighbor D from B. Mark D as visited.',
+          description: "Visit neighbor D from B. Mark D as visited.",
           highlightedLines: [5, 6],
-          variables: { current: 'D', visited: ['A', 'B', 'D'] },
-          highlightedVars: ['current'],
-          visualData: { current: 'D', visited: ['A', 'B', 'D'] },
+          variables: { current: "D", visited: ["A", "B", "D"] },
+          highlightedVars: ["current"],
+          visualData: { current: "D", visited: ["A", "B", "D"] },
         },
         {
-          description: 'Backtrack to B. No more unvisited neighbors.',
+          description: "Backtrack to B. No more unvisited neighbors.",
           highlightedLines: [8],
-          variables: { current: 'B', visited: ['A', 'B', 'D'] },
+          variables: { current: "B", visited: ["A", "B", "D"] },
           highlightedVars: [],
-          visualData: { current: 'B', visited: ['A', 'B', 'D'] },
+          visualData: { current: "B", visited: ["A", "B", "D"] },
         },
       ],
     },
   };
 
-  return data[algorithmId] || data['quick-sort'];
+  return data[algorithmId] || data["quick-sort"];
 }

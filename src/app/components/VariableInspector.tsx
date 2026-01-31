@@ -1,9 +1,12 @@
 interface VariableInspectorProps {
-  variables: Record<string, any>;
+  variables: Record<string, unknown>;
   highlightedVars?: string[];
 }
 
-export function VariableInspector({ variables, highlightedVars = [] }: VariableInspectorProps) {
+export function VariableInspector({
+  variables,
+  highlightedVars = [],
+}: VariableInspectorProps) {
   const entries = Object.entries(variables);
 
   return (
@@ -30,19 +33,21 @@ export function VariableInspector({ variables, highlightedVars = [] }: VariableI
 
 interface VariableItemProps {
   name: string;
-  value: any;
+  value: unknown;
   isHighlighted: boolean;
 }
 
 function VariableItem({ name, value, isHighlighted }: VariableItemProps) {
-  const formattedValue = Array.isArray(value) ? `[${value.join(', ')}]` : String(value);
+  const formattedValue = Array.isArray(value)
+    ? `[${value.join(", ")}]`
+    : String(value);
 
   return (
     <div
       className={`flex flex-col p-3 rounded-lg transition-colors ${
         isHighlighted
-          ? 'bg-yellow-50 dark:bg-yellow-500/10 border border-yellow-200 dark:border-yellow-500/20'
-          : 'bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800'
+          ? "bg-yellow-50 dark:bg-yellow-500/10 border border-yellow-200 dark:border-yellow-500/20"
+          : "bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800"
       }`}
     >
       <span className="text-xs font-mono font-semibold text-purple-700 dark:text-purple-400 mb-1">
