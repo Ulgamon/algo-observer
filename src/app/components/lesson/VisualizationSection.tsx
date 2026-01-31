@@ -1,8 +1,8 @@
-import { VisualizationControls } from '../VisualizationControls';
-import { StepTimeline } from '../StepTimeline';
-import { VisualizationCanvas } from './VisualizationCanvas';
-import { CollapsiblePanel } from './CollapsiblePanel';
-import { VariableInspector } from '../VariableInspector';
+import { VisualizationControls } from "../VisualizationControls";
+import { StepTimeline } from "../StepTimeline";
+import { VisualizationCanvas } from "./VisualizationCanvas";
+import { CollapsiblePanel } from "./CollapsiblePanel";
+import { VariableInspector } from "../VariableInspector";
 
 interface VisualizationSectionProps {
   isPlaying: boolean;
@@ -15,9 +15,9 @@ interface VisualizationSectionProps {
   totalSteps: number;
   stepDescriptions: string[];
   onStepChange: (step: number) => void;
-  visualData: any;
+  visualData: unknown;
   algorithmId: string;
-  variables: Record<string, any>;
+  variables: Record<string, unknown>;
   highlightedVars: string[];
 }
 
@@ -66,7 +66,10 @@ export function VisualizationSection({
 
       {/* Variables Panel - Collapsible */}
       <CollapsiblePanel title="Variable State" defaultOpen={true}>
-        <VariableInspector variables={variables} highlightedVars={highlightedVars} />
+        <VariableInspector
+          variables={variables}
+          highlightedVars={highlightedVars}
+        />
       </CollapsiblePanel>
     </div>
   );

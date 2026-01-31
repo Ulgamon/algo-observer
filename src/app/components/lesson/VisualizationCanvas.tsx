@@ -1,14 +1,17 @@
 interface VisualizationCanvasProps {
-  data: any;
+  data: unknown;
   algorithmId: string;
 }
 
-export function VisualizationCanvas({ data, algorithmId }: VisualizationCanvasProps) {
+export function VisualizationCanvas({
+  data,
+  algorithmId,
+}: VisualizationCanvasProps) {
   if (Array.isArray(data)) {
     return <ArrayVisualization data={data} />;
   }
 
-  if (algorithmId.includes('search') || algorithmId.includes('graph')) {
+  if (algorithmId.includes("search") || algorithmId.includes("graph")) {
     return <GraphVisualization />;
   }
 
@@ -34,12 +37,12 @@ function ArrayVisualization({ data }: { data: ArrayItem[] }) {
 function ArrayCell({ item }: { item: ArrayItem }) {
   const getStyles = () => {
     if (item.highlighted) {
-      return 'bg-blue-500 text-white scale-110 shadow-lg';
+      return "bg-blue-500 text-white scale-110 shadow-lg";
     }
     if (item.sorted) {
-      return 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-2 border-green-500';
+      return "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-2 border-green-500";
     }
-    return 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border-2 border-zinc-300 dark:border-zinc-700';
+    return "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border-2 border-zinc-300 dark:border-zinc-700";
   };
 
   return (
@@ -55,7 +58,9 @@ function GraphVisualization() {
   return (
     <div className="text-center">
       <div className="mb-4 text-6xl">🔍</div>
-      <p className="text-sm text-zinc-600 dark:text-zinc-400">Graph visualization</p>
+      <p className="text-sm text-zinc-600 dark:text-zinc-400">
+        Graph visualization
+      </p>
     </div>
   );
 }

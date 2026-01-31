@@ -66,9 +66,7 @@ export function AlgorithmLesson({ algorithmId }: AlgorithmLessonProps) {
             onSpeedChange={setSpeed}
             currentStep={currentStep}
             totalSteps={totalSteps}
-            stepDescriptions={lessonData.steps.map(
-              (s: { description: unknown }) => s.description,
-            )}
+            stepDescriptions={lessonData.steps.map((s) => s.description)}
             onStepChange={handleStepChange}
             visualData={currentStepData.visualData}
             algorithmId={algorithmId}
@@ -107,11 +105,7 @@ export function AlgorithmLesson({ algorithmId }: AlgorithmLessonProps) {
               onSpeedChange={setSpeed}
               currentStep={currentStep}
               totalSteps={totalSteps}
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              stepDescriptions={lessonData.steps.map(
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                (s: { description: any }) => s.description,
-              )}
+              stepDescriptions={lessonData.steps.map((s) => s.description)}
               onStepChange={handleStepChange}
               visualData={currentStepData.visualData}
               algorithmId={algorithmId}
@@ -174,8 +168,7 @@ export function AlgorithmLesson({ algorithmId }: AlgorithmLessonProps) {
 // }
 
 function getLessonData(algorithmId: string) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const data: Record<string, any> = {
+  const data: LessonsById = {
     "quick-sort": {
       title: "Quick Sort",
       category: "Sorting & Searching",
@@ -364,3 +357,44 @@ function getLessonData(algorithmId: string) {
 
   return data[algorithmId] || data["quick-sort"];
 }
+
+export type AlgorithmId = string;
+
+export type VisualBar = {
+  value: number;
+  highlighted: boolean;
+  sorted: boolean;
+};
+
+export type SortingVisualData = VisualBar[];
+
+export type GraphVisualData = {
+  current: string;
+  visited: string[];
+  // add more later: stack?: string[], edgesHighlighted?: [string,string][]
+};
+
+export type VisualData = SortingVisualData | GraphVisualData;
+
+export type LessonStep = {
+  description: string;
+  highlightedLines: number[];
+  variables: Record<string, unknown>; // flexible per algorithm
+  highlightedVars: string[];
+  visualData: VisualData;
+};
+
+export type AlgorithmLesson = {
+  title: string;
+  category: string;
+  description: string;
+  timeComplexity: string;
+  spaceComplexity: string;
+  pseudocode: string[];
+  overview: string;
+  explanation: string[];
+  useCases: string[];
+  steps: LessonStep[];
+};
+
+export type LessonsById = Record<AlgorithmId, AlgorithmLesson>;

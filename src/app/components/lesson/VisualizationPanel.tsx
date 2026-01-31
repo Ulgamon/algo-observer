@@ -1,6 +1,6 @@
-import { VisualizationControls } from '../VisualizationControls';
-import { StepTimeline } from '../StepTimeline';
-import { VisualizationCanvas } from './VisualizationCanvas';
+import { VisualizationControls } from "../VisualizationControls";
+import { StepTimeline } from "../StepTimeline";
+import { VisualizationCanvas } from "./VisualizationCanvas";
 
 interface VisualizationPanelProps {
   isPlaying: boolean;
@@ -13,7 +13,7 @@ interface VisualizationPanelProps {
   totalSteps: number;
   stepDescriptions: string[];
   onStepChange: (step: number) => void;
-  visualData: any;
+  visualData: unknown;
   algorithmId: string;
 }
 
