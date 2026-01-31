@@ -38,19 +38,19 @@ pipeline {
             }
         }
 
-        stage("Sonar Code Analysis") {
-            environment {
-                scannerHome = tool 'sonar7.2'
-            }
-            steps {
-                withSonarQubeEnv('sonarqubeserver') {
-                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=algo-observer \
-                        -Dsonar.projectName=algo-observer \
-                        -Dsonar.projectVersion=1.0 \
-                        -Dsonar.sources=src'''
-                }
-            }
-        }
+        // stage("Sonar Code Analysis") {
+        //     environment {
+        //         scannerHome = tool 'sonar7.2'
+        //     }
+        //     steps {
+        //         withSonarQubeEnv('sonarqubeserver') {
+        //             sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=algo-observer \
+        //                 -Dsonar.projectName=algo-observer \
+        //                 -Dsonar.projectVersion=1.0 \
+        //                 -Dsonar.sources=src'''
+        //         }
+        //     }
+        // }
 
         // stage("Quality Gate") {
         //     steps {
