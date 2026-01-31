@@ -1,5 +1,6 @@
 import { HomePage } from "@/app/components/HomePage";
 import { AlgorithmLesson } from "@/app/components/AlgorithmLesson";
+import { Footer } from "./Footer";
 
 interface MainContentProps {
   selectedAlgorithm: string;
@@ -15,10 +16,13 @@ export function MainContent({
   // Show homepage when on Introduction section and no algorithm selected
   if (!selectedAlgorithm) {
     return (
-      <HomePage
-        onSelectAlgorithm={onSelectAlgorithm}
-        onSectionChange={onSectionChange}
-      />
+      <>
+        <HomePage
+          onSelectAlgorithm={onSelectAlgorithm}
+          onSectionChange={onSectionChange}
+        />
+        <Footer />
+      </>
     );
   }
 
